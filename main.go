@@ -76,6 +76,14 @@ func handleKeyEvent() {
 					currentState.Resume()
 				}
 			default:
+				if ev.Key == termbox.KeySpace {
+					if currentState.IsRunning() {
+						currentState.Pause()
+					} else {
+						currentState.Resume()
+					}
+					currentPainter.Draw()
+				}
 				if currentState.IsWaiting() {
 					exit()
 				}
